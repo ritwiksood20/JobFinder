@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import JobTable from "./JobTable";
+import React, { Component } from 'react';
 import { Container, Button } from "semantic-ui-react";
+import JobTable from "./JobTable";
 
 export default class JobContainer extends Component {
   state = {
