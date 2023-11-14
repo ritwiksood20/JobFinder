@@ -1,5 +1,5 @@
 import React from 'react';
-import './mentor.css';
+import '../styles/mentor.css';
 import { Container, Button } from "semantic-ui-react";
 
 const Mentor = () => {

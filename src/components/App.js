@@ -1,13 +1,13 @@
 import React from 'react';
-import HeaderSegmentLayout from './HeaderSegmentLayout';
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "fomantic-ui-css/semantic.css";
+import HeaderSegmentLayout from './HeaderSegmentLayout';
 import Mentor from './mentorTable';
 import Login from './login';
 import Register from './register';
 import JobContainer from './JobContainer';
-import './App.css';
+import '../styles/App.css';
 
 function App() {
   return (

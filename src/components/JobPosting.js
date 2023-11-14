@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './JobPosting.css';
+import '../styles/JobPosting.css';
 
 function App() {
   const [jobs, setJobs] = useState([]);
