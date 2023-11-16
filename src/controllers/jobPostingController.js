@@ -23,4 +23,22 @@ const postJobPosting = async (req, res) => {
     }
 }
 
-module.exports = { getAllJobPostings, postJobPosting }
+const getJobPosting = async (req, res) => {
+    const search_str = req.params.title;
+    console.log("search_str: " + req.params.title);
+    try {
+        const jobs = await jobPostingModel.find({ "title": { $regex: new RegExp(search_str, 'i') } });
+        if(jobs) {
+            console.log("Jobs Fetched successfully" + jobs);
+            res.status(200).send(jobs);
+        } else {
+            console.log("No jobs found!!!");
+            alert("No Jobs Found!!!");
+        }
+    } catch(error) {
+        console.log("Something went wrong!" + error);
+        res.status(500).json({ error: "Something went wrong!" });
+    }
+}
+
+module.exports = { getAllJobPostings, postJobPosting, getJobPosting }
