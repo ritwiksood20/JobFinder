@@ -3,16 +3,17 @@ const mentorModel = require( "../models/mentor");
 
 const validateUser = async (req, res) => {
     const { loginEmail, loginPassword } = req.body;
-    console.log("entered");
+    console.log("entered controller");
     try {
         const student = await studentModel.findOne({email : loginEmail, password : loginPassword});
         const mentor = await mentorModel.findOne({email : loginEmail, password : loginPassword});
         
         if(student){
-            res.status(200).json({ ...student._doc, designation : 'student'});
+            console.log("server: " + student);
+            res.status(200).json({ ...student._doc, criteria : 'student'});
         } else if(mentor){
              // Sending the user back as a response
-             res.status(200).json({ ...mentor._doc, designation : 'mentor'});
+             res.status(200).json({ ...mentor._doc, criteria : 'mentor'});
         } else {
             // alert(new Error("User Not Found"));
             console.log("error: User Not Found");

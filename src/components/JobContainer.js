@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
 import { Container, Button } from "semantic-ui-react";
+import { Link } from 'react-router-dom';
 import JobTable from "./JobTable";
+
+const getCurrentDate = () => {
+  // Get the current date
+  const currentDate = new Date();
+
+  // Extract individual date components
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1; // Months are zero-indexed
+  const day = currentDate.getDate();
+
+  // Format the date as a string
+  const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
+
+  return formattedDate;
+};
 
 export default class JobContainer extends Component {
   state = {
     jobs: [],
     page: 0,
   };
-
+  // {console.log(getCurrentDate());}
   data = [
     {
         "Label": "Backend Developer",
@@ -17,7 +33,7 @@ export default class JobContainer extends Component {
         "Seniority": "Entry-Level",
         "Description": "Responsible for architecting scalable solutions and optimizing backend processes.",
         "Action": "View Details",
-        "Score": 92
+        "postedDate": getCurrentDate()
     },
     {
         "Label": "Frontend Engineer",
@@ -27,7 +43,7 @@ export default class JobContainer extends Component {
         "Seniority": "Mid-Level",
         "Description": "Crafting intuitive user interfaces and driving user experience enhancements.",
         "Action": "View Details",
-        "Score": 88
+        "postedDate": getCurrentDate()
     },
     {
         "Label": "Data Scientist",
@@ -37,7 +53,7 @@ export default class JobContainer extends Component {
         "Seniority": "Entry-Level",
         "Description": "Developing predictive models and implementing machine learning algorithms.",
         "Action": "View Details",
-        "Score": 95
+        "postedDate": getCurrentDate()
     }
     // Add more rows as needed
 ];
@@ -50,6 +66,7 @@ export default class JobContainer extends Component {
     "Seniority",
     "Description",
     "Action",
+    "Posted Date"
   ];
 
   componentDidMount() {
@@ -165,6 +182,12 @@ export default class JobContainer extends Component {
           </Button>
           
         </Button.Group>
+
+        <Link to="/jobPostingForm"><Button style={{ marginLeft: "485px", backgroundColor: "black", color: "white" }}
+            onClick={() => this.setState({ time: "week" })}
+            active={this.state.time == "week"}
+          >Add a Job</Button>
+        </Link>
 
         <JobTable
         header={this.header}

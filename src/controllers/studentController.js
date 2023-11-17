@@ -24,9 +24,9 @@ const postStudent = async (req, res) => {
 }
 
 const getStudent = async (req,res) => {
-    const emailId = req.params.emailId;
+    const search_str = req.params.emailId;
     try {
-        const user = await studentModel.findOne({email : emailId});
+        const user = await studentModel.findOne({"email": { $regex: new RegExp(search_str, 'i') }});
         res.status(200).json(user);
     } catch(error) {
         console.log("student Not found!" + error);
