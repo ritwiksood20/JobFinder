@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState, Component } from 'react';
 import { Container, Button } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import JobTable from "./JobTable";
@@ -19,45 +19,14 @@ const getCurrentDate = () => {
 };
 
 export default class JobContainer extends Component {
-  state = {
-    jobs: [],
-    page: 0,
-  };
-  // {console.log(getCurrentDate());}
-  data = [
-    {
-        "Label": "Backend Developer",
-        "Title": "Senior Software Engineer",
-        "Company": "TechSolutions Inc.",
-        "Location": "San Francisco, CA",
-        "Seniority": "Entry-Level",
-        "Description": "Responsible for architecting scalable solutions and optimizing backend processes.",
-        "Action": "View Details",
-        "postedDate": getCurrentDate()
-    },
-    {
-        "Label": "Frontend Engineer",
-        "Title": "UI/UX Developer",
-        "Company": "DesignWorks LLC",
-        "Location": "New York, NY",
-        "Seniority": "Mid-Level",
-        "Description": "Crafting intuitive user interfaces and driving user experience enhancements.",
-        "Action": "View Details",
-        "postedDate": getCurrentDate()
-    },
-    {
-        "Label": "Data Scientist",
-        "Title": "Machine Learning Specialist",
-        "Company": "AI Innovations Corp.",
-        "Location": "Seattle, WA",
-        "Seniority": "Entry-Level",
-        "Description": "Developing predictive models and implementing machine learning algorithms.",
-        "Action": "View Details",
-        "postedDate": getCurrentDate()
-    }
-    // Add more rows as needed
-];
 
+  constructor(props) {
+    super()
+    this.state = {
+      jobs: [],
+      page:0
+    };
+  }
 
   header = [
     "Title",
@@ -74,9 +43,7 @@ export default class JobContainer extends Component {
     // this.handleSetLabel = this.handleSetLabel.bind(this);
     // this.fetchData = this.fetchData.bind(this);
 
-    // this.fetchData();
-    this.setState({ jobs: this.data });
-    console.log(this.data);
+   this.fetchData();
   }
 
   componentDidUpdate(prevProps) {
@@ -118,6 +85,7 @@ export default class JobContainer extends Component {
       return j;
     });
     this.setState({ jobs: newJobs });
+    console.log(this.state.jobs)
     // axios.put(`/preds/${job.jobId}`, { label }).then((res) => {
     //   console.log(res);
     // });
@@ -191,10 +159,7 @@ export default class JobContainer extends Component {
 
         <JobTable
         header={this.header}
-        rows={this.state.jobs.slice(
-          this.state.page * 15,
-          (this.state.page + 1) * 15
-        )}
+        rows={this.state.jobs}
         onPageClick={this.handlePageClick}
         onSetLabel={this.handleSetLabel}
         numPages={parseInt(this.state.jobs.length / 15)}
@@ -204,4 +169,22 @@ export default class JobContainer extends Component {
       
     );
   }
+
+  fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/jobPostings');
+    
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const result = await response.json();
+      
+      this.setState({ jobs: result });
+      console.log("vuivek chutiya hain", this.state.jobs)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
 }

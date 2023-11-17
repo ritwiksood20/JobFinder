@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const server = express();
 require("./db/mongoose");
 const port = 4000;
@@ -6,7 +7,7 @@ const loginRoute = require('./routes/loginRoutes');
 const jobPostingRoute = require('./routes/jobPostingRoutes');
 const mentorRoute = require('./routes/mentorRoutes');
 const studentRoute = require('./routes/studentRoutes');
-
+server.use(cors());
 server.use(express.json());
 // console.log("entered");
 server.use(loginRoute);

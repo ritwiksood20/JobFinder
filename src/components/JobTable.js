@@ -3,6 +3,7 @@ import { Icon, Menu, Table, Button } from "semantic-ui-react";
 
 class JobTable extends Component {
   render() {
+    const { rows } = this.props;
     return (
       <Table celled>
         <Table.Header>
@@ -14,7 +15,7 @@ class JobTable extends Component {
         </Table.Header>
 
         <Table.Body>
-          {this.props.rows.map((job, index) => (
+          {rows.map((job, index) => (
             <Table.Row key={index}>
               {/* <Table.Cell>
                 <Button circular icon size="mini" color="grey">
@@ -22,14 +23,14 @@ class JobTable extends Component {
                 </Button>
               </Table.Cell> */}
               <Table.Cell>
-                <a href={`https://www.linkedin.com/jobs/view/${index}`}>
-                  {job.Title}
-                </a>
+                <a href={`https://www.linkedin.com/jobs/view/${index}`}/>
+                  {job.title}
+              
               </Table.Cell>
-              <Table.Cell>{job.Company}</Table.Cell>
-              <Table.Cell>{job.Location}</Table.Cell>
-              <Table.Cell>{job.Seniority}</Table.Cell>
-              <Table.Cell>{job.Description.slice(0, 140)}</Table.Cell>
+              <Table.Cell>{job.company}</Table.Cell>
+              <Table.Cell>{job.location}</Table.Cell>
+              <Table.Cell>{job.seniority}</Table.Cell>
+              <Table.Cell>{job.description}</Table.Cell>
               <Table.Cell>
                 <Button.Group>
                   <Button
