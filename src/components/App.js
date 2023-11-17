@@ -7,6 +7,7 @@ import Mentor from './mentorTable';
 import Login from './login';
 import Register from './register';
 import JobContainer from './JobContainer';
+import JobPosting from './JobPosting';
 import '../styles/App.css';
 
 function App() {
@@ -65,6 +66,10 @@ function App() {
         />
         <Route path="/register" element={
               <Register />
+          } 
+        />
+        <Route path="/jobPostingForm" element={
+              <JobPosting />
           } 
         />
         {/* Add more routes for other pages if needed */}

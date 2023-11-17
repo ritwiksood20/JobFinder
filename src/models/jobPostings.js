@@ -23,6 +23,10 @@ const jobPostingSchema = mongoose.Schema({
     },
     action: {
         type: String,
+    },
+    postedDate: {
+        type: Date,
+        required: true
     }
 });
 

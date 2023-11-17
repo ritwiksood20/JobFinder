@@ -9,7 +9,7 @@ const mentorRoute = require('./routes/mentorRoutes');
 const studentRoute = require('./routes/studentRoutes');
 server.use(cors());
 server.use(express.json());
-console.log("entered");
+// console.log("entered");
 server.use(loginRoute);
 server.use(jobPostingRoute);
 server.use(mentorRoute);

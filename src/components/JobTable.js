@@ -51,6 +51,7 @@ class JobTable extends Component {
                   </Button>
                 </Button.Group>
               </Table.Cell>
+              <Table.Cell>{job.postedDate}</Table.Cell>
               {/* <Table.Cell>
                 <b>{job.Score}</b>
               </Table.Cell> */}

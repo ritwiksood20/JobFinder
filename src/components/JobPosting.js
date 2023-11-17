@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/JobPosting.css';
 
 function App() {
-  const [jobs, setJobs] = useState([]);
+  // const [jobs, setJobs] = useState([]);
   const [newJob, setNewJob] = useState({
     postId: '',
     company: '',
@@ -18,82 +18,77 @@ function App() {
   };
 
   const handleAddJob = () => {
-    setJobs([...jobs, newJob]);
-    setNewJob({
-      postId: '',
-      company: '',
-      position: '',
-      location: '',
-      seniority: '',
-      description: '',
-    });
+    // setJobs([...jobs, newJob]);
+    // setNewJob({
+    //   postId: '',
+    //   company: '',
+    //   position: '',
+    //   location: '',
+    //   seniority: '',
+    //   description: '',
+    // });
   };
 
   return (
-      <div className="App">
-        <h1><center>Job Posting Page</center></h1>
+      <div className="jobPostingApp">
+        <h1><center>Job Posting Form</center></h1>
         <div>
-            <label htmlFor="postId"><b>Post ID: </b></label>
-          <input
+            <label className="jobPostingLabel"htmlFor="postId"><b>Post ID: </b></label>
+          <input className="jobPostingInput"
               type="text"
-              id="postId"
               name="postId"
               value={newJob.postId}
               onChange={handleInputChange}
           />
         </div>
         <div>
-          <label htmlFor="company"><b>Company: </b></label>
-          <input
+          <label className="jobPostingLabel"htmlFor="company"><b>Company: </b></label>
+          <input className="jobPostingInput"
               type="text"
-              id="company"
               name="company"
               value={newJob.company}
               onChange={handleInputChange}
           />
         </div>
         <div>
-          <label htmlFor="position"><b>Position: </b></label>
-          <input
+          <label className="jobPostingLabel"htmlFor="position"><b>Position: </b></label>
+          <input className="jobPostingInput"
               type="text"
-              id="position"
               name="position"
               value={newJob.position}
               onChange={handleInputChange}
           />
         </div>
         <div>
-          <label htmlFor="location"><b>Location: </b></label>
-          <input
+          <label className="jobPostingLabel"htmlFor="location"><b>Location: </b></label>
+          <input className="jobPostingInput"
               type="text"
-              id="location"
               name="location"
               value={newJob.location}
               onChange={handleInputChange}
           />
         </div>
         <div>
-          <label htmlFor="seniority"><b>Seniority: </b></label>
-          <input
+          <label className="jobPostingLabel"htmlFor="seniority"><b>Seniority: </b></label>
+          <input className="jobPostingInput"
               type="text"
-              id="seniority"
               name="seniority"
               value={newJob.seniority}
               onChange={handleInputChange}
           />
         </div>
         <div>
-          <label htmlFor="description"><b>Description: </b></label>
-          <textarea
+          <label className="jobPostingLabel" htmlFor="description"><b>Description: </b></label>
+          <textarea className='jobPostingTextarea'
               id="description"
               name="description"
               value={newJob.description}
               onChange={handleInputChange}
           />
         </div>
-        <button onClick={handleAddJob}>Add Job</button>
+        <button className="jobPostingButton" onClick={handleAddJob}>Add Job</button>
 
-          <div className="job-list-container">
+          {/* <div className="job-list-container">
               <h2>Job Listings:</h2>
               <ol className="job-list">
                   {jobs.map((job, index) => (
@@ -107,7 +102,7 @@ function App() {
                       </li>
                   ))}
               </ol>
-          </div>
+          </div> */}
 
       </div>
   );
