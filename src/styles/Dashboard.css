@@ -1,8 +1,5 @@
-body{
-  background-color: lavender;
-}
 
-.dashboard {
+.dashboard-h1 {
   max-width: 600px;
   margin: auto;
   margin-top: 40px;
@@ -11,12 +8,9 @@ body{
   background-color: lavender;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-
-}
-
-h1 {
   text-align: center;
   color: #333;
+
 }
 
 .time-slots {
